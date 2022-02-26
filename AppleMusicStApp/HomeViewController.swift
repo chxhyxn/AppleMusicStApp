@@ -34,7 +34,7 @@ extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
         case UICollectionView.elementKindSectionHeader:
-            guard  let item = trackManager.todaysTrack else {
+            guard let item = trackManager.todaysTrack else {
                 return UICollectionReusableView()
             }
         
@@ -46,6 +46,8 @@ extension HomeViewController: UICollectionViewDataSource {
                 let playerStoryboard = UIStoryboard.init(name: "Player", bundle: nil)
                 guard let playerVC = playerStoryboard.instantiateViewController(withIdentifier: "PlayerViewController") as? PlayerViewController else { return }
                 playerVC.simplePlayer.replaceCurrentItem(with: $0)
+                playerVC.currentTrackIndex = -1
+                playerVC.trackManager = self.trackManager
                 self.present(playerVC, animated: true, completion: nil)
             }
             
