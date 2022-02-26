@@ -59,6 +59,7 @@
                                     <constraint firstAttribute="width" constant="56" id="Nnc-b9-UkY"/>
                                     <constraint firstAttribute="height" constant="56" id="ddY-XT-gbT"/>
                                 </constraints>
+                                <color key="tintColor" systemColor="labelColor"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="play.fill" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="40"/>
@@ -73,6 +74,7 @@
                                     <constraint firstAttribute="height" constant="56" id="BbL-Hy-f6I"/>
                                     <constraint firstAttribute="width" constant="56" id="DDs-y2-aQM"/>
                                 </constraints>
+                                <color key="tintColor" systemColor="labelColor"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="backward.fill" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
@@ -87,12 +89,28 @@
                                     <constraint firstAttribute="height" constant="56" id="PZI-VJ-vQU"/>
                                     <constraint firstAttribute="width" constant="56" id="tEh-WD-uwb"/>
                                 </constraints>
+                                <color key="tintColor" systemColor="labelColor"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="forward.fill" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
                                 </state>
                                 <connections>
                                     <action selector="toggleBtnNext:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="r5T-hk-2VO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ibF-GS-nrL" userLabel="btnClose">
+                                <rect key="frame" x="335" y="63" width="39" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="VcS-01-BOQ"/>
+                                    <constraint firstAttribute="width" constant="39" id="cvn-fR-bis"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="13"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="toggleBtnClose:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="awd-OT-KBc"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -103,9 +121,11 @@
                             <constraint firstItem="xTe-h4-YYl" firstAttribute="top" secondItem="OhD-9g-1HG" secondAttribute="bottom" constant="70" id="DYx-eu-6Z8"/>
                             <constraint firstItem="d6q-TD-fra" firstAttribute="trailing" secondItem="OhD-9g-1HG" secondAttribute="trailing" id="Fla-qN-67d"/>
                             <constraint firstItem="OhD-9g-1HG" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="Hpi-EK-lCf"/>
+                            <constraint firstItem="ibF-GS-nrL" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="19" id="IZl-Nn-V0W"/>
                             <constraint firstItem="o03-an-1li" firstAttribute="top" secondItem="Opf-t3-pop" secondAttribute="bottom" constant="8" symbolic="YES" id="Lcy-Ds-KgB"/>
                             <constraint firstItem="akI-6N-hWN" firstAttribute="leading" secondItem="OhD-9g-1HG" secondAttribute="leading" id="O6w-V5-3yP"/>
                             <constraint firstItem="PvS-yi-yqO" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="90" id="Pt5-bT-H4H"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ibF-GS-nrL" secondAttribute="trailing" constant="16" id="Rof-sk-yW3"/>
                             <constraint firstItem="Opf-t3-pop" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="Sd4-IR-Rm8"/>
                             <constraint firstItem="OhD-9g-1HG" firstAttribute="width" secondItem="PvS-yi-yqO" secondAttribute="width" id="SxG-yh-2qj"/>
                             <constraint firstItem="xTe-h4-YYl" firstAttribute="top" secondItem="Fc9-SU-OPV" secondAttribute="bottom" constant="-55.666666666666629" id="Ugk-Hv-q5e"/>
@@ -121,6 +141,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnClose" destination="ibF-GS-nrL" id="MhC-g8-Rc4"/>
                         <outlet property="btnNext" destination="Fc9-SU-OPV" id="KbB-hE-kHx"/>
                         <outlet property="btnPlay" destination="xTe-h4-YYl" id="TPT-Dw-Cka"/>
                         <outlet property="btnPrev" destination="WY6-vR-8Wo" id="qdk-Pt-LKm"/>
@@ -134,13 +155,17 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="725" y="90"/>
+            <point key="canvasLocation" x="724.61538461538464" y="89.5734597156398"/>
         </scene>
     </scenes>
     <resources>
         <image name="backward.fill" catalog="system" width="128" height="79"/>
         <image name="forward.fill" catalog="system" width="128" height="79"/>
         <image name="play.fill" catalog="system" width="116" height="128"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

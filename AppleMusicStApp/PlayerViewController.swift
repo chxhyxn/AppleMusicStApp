@@ -11,6 +11,7 @@ import Foundation
 
 class PlayerViewController: UIViewController {
 
+    @IBOutlet weak var btnClose: UIButton!
     @IBOutlet weak var imgViewThumbnail: UIImageView!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblArtist: UILabel!
@@ -47,6 +48,10 @@ class PlayerViewController: UIViewController {
         super.viewWillDisappear(animated)
         simplePlayer.pause()
         simplePlayer.replaceCurrentItem(with: nil)
+    }
+    
+    @IBAction func toggleBtnClose(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func toggleBtnPlay(_ sender: UIButton) {
@@ -140,9 +145,6 @@ extension PlayerViewController {
     }
     
     func updateTintColor() {
-        btnPlay.tintColor = DefaultStyle.Colors.tint
-        btnPrev.tintColor = DefaultStyle.Colors.tint
-        btnNext.tintColor = DefaultStyle.Colors.tint
         sliderPlaying.tintColor = DefaultStyle.Colors.tint
     }
     
