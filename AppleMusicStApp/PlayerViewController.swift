@@ -37,7 +37,7 @@ class PlayerViewController: UIViewController {
             self.updateTime(time: $0)
         })
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         updateTrackInfo()
         updateTintColor()
@@ -105,7 +105,7 @@ extension PlayerViewController {
         lblArtist.text = track.artist
     }
     
-    func updateBtnPlay(){
+    func updateBtnPlay() {
         let configuration = UIImage.SymbolConfiguration(pointSize: 40)
         let image : UIImage?
         if simplePlayer.isPlaying{
@@ -127,12 +127,16 @@ extension PlayerViewController {
     
     func secondsToString(second: Double) -> String {
         guard second.isNaN == false else {
-            return "0:0"
+            return "0:00"
         }
         let secondInt = Int(second)
         let min = secondInt / 60
         let sec = secondInt % 60
-        return "\(min):\(sec)"
+        if sec < 10 {
+            return "\(min):0\(sec)"
+        }else {
+            return "\(min):\(sec)"
+        }
     }
     
     func updateTintColor() {
