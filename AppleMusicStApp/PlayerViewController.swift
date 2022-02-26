@@ -17,25 +17,30 @@ class PlayerViewController: UIViewController {
     @IBOutlet weak var sliderPlaying: UISlider!
     @IBOutlet weak var lblCurrentTime: UILabel!
     @IBOutlet weak var lblTotalDuration: UILabel!
+    @IBOutlet weak var btnPrev: UIButton!
     @IBOutlet weak var btnPlay: UIButton!
+    @IBOutlet weak var btnNext: UIButton!
     
     let simplePlayer = SimplePlayer.shared
     var isSeeking: Bool = false
     var timeObserver: Any?
+    var currentTrackIndex: Int!
+    var trackManager: TrackManager!
         
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        updateBtnPlay()
-        updateTintColor()
+        imgViewThumbnail.layer.cornerRadius = 4
         
+        updateBtnPlay()
         timeObserver = simplePlayer.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1, preferredTimescale: 10), queue: DispatchQueue.main, using: {
             self.updateTime(time: $0)
         })
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        updateTackInfo()
+        updateTrackInfo()
+        updateTintColor()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -51,6 +56,25 @@ class PlayerViewController: UIViewController {
             simplePlayer.play()
         }
         updateBtnPlay()
+    }
+    
+    @IBAction func toggleBtnPrev(_ sender: UIButton) {
+        if currentTrackIndex > 0 {
+            currentTrackIndex -= 1
+            let prev = trackManager.tracks[currentTrackIndex]
+            simplePlayer.replaceCurrentItem(with: prev)
+        }
+        updateTrackInfo()
+    }
+    
+    @IBAction func toggleBtnNext(_ sender: UIButton) {
+        let tracksCount = trackManager.tracks.count
+        if currentTrackIndex < tracksCount-1 {
+            currentTrackIndex += 1
+            let next = trackManager.tracks[currentTrackIndex]
+            simplePlayer.replaceCurrentItem(with: next)
+        }
+        updateTrackInfo()
     }
     
     @IBAction func dragBegin(_ sender: Any) {
@@ -72,7 +96,7 @@ class PlayerViewController: UIViewController {
 }
 
 extension PlayerViewController {
-    func updateTackInfo() {
+    func updateTrackInfo() {
         guard let track = simplePlayer.currentItem?.convertToTrack() else {
             return
         }
@@ -103,7 +127,7 @@ extension PlayerViewController {
     
     func secondsToString(second: Double) -> String {
         guard second.isNaN == false else {
-            return "0:00"
+            return "0:0"
         }
         let secondInt = Int(second)
         let min = secondInt / 60
@@ -113,6 +137,12 @@ extension PlayerViewController {
     
     func updateTintColor() {
         btnPlay.tintColor = DefaultStyle.Colors.tint
+        btnPrev.tintColor = DefaultStyle.Colors.tint
+        btnNext.tintColor = DefaultStyle.Colors.tint
         sliderPlaying.tintColor = DefaultStyle.Colors.tint
+    }
+    
+    func resetCurrentTime() {
+        simplePlayer.seek(to: CMTime(seconds: 0, preferredTimescale: 10))
     }
 }

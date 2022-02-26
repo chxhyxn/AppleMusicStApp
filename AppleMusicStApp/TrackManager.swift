@@ -23,7 +23,7 @@ class TrackManager {
     
     func loadAlbums(tracks: [AVPlayerItem]) -> [Album] {
         let trackList = tracks.compactMap { $0.convertToTrack() }
-        let albumDics = Dictionary(grouping: trackList, by: { track in  track.albumName })
+        let albumDics = Dictionary(grouping: trackList, by: { track in track.albumName })
         var albums: [Album] = []
         for (key, value) in albumDics {
             let title = key

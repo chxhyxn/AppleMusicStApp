@@ -62,6 +62,8 @@ extension HomeViewController: UICollectionViewDelegate {
         guard let playerVC = playerStoryboard.instantiateViewController(withIdentifier: "PlayerViewController") as? PlayerViewController else { return }
         let item = trackManager.tracks[indexPath.item]
         playerVC.simplePlayer.replaceCurrentItem(with: item)
+        playerVC.currentTrackIndex = indexPath.item
+        playerVC.trackManager = trackManager
         present(playerVC, animated: true, completion: nil)
     }
 }

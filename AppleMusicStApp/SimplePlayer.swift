@@ -16,7 +16,6 @@ class SimplePlayer {
     init() {}
     
     var currentItem: AVPlayerItem? {
-        print("1")
         return player.currentItem
     }
     
