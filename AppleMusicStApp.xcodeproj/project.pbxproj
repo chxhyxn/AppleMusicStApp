@@ -118,21 +118,14 @@
 		D1113A5527C71038001351B6 /* AppleMusicStApp */ = {
 			isa = PBXGroup;
 			children = (
-				D13FBF0927C9A6B80022DF65 /* PlayerViewController.swift */,
-				D177C1A127C9ACBE00D23C0E /* SimplePlayer.swift */,
-				D13FBF0327C9A0EA0022DF65 /* Player.storyboard */,
-				D1113A5627C71038001351B6 /* AppDelegate.swift */,
-				D1113A5827C71038001351B6 /* SceneDelegate.swift */,
-				D1113A5C27C71038001351B6 /* Main.storyboard */,
+				D1AA7E3027C9F6B000FC9112 /* Home */,
+				D1AA7E3127C9F6C400FC9112 /* Player */,
+				D1AA7E3227C9F6CB00FC9112 /* Track */,
 				D1113A5F27C71039001351B6 /* Assets.xcassets */,
 				D1113A6127C71039001351B6 /* LaunchScreen.storyboard */,
-				D145FE2727C835C100085EE8 /* TrackCollectionHeaderView.swift */,
 				D1113A7427C712BC001351B6 /* DefaultStyle.swift */,
-				D1113A7227C712A5001351B6 /* Track.swift */,
-				D1113A7027C71289001351B6 /* TrackManager.swift */,
-				D1113A6E27C71266001351B6 /* ExtensionAVPlayerItem.swift */,
-				D1113A6C27C7122D001351B6 /* TrackCollectionViewCell.swift */,
-				D1113A6A27C711AF001351B6 /* HomeViewController.swift */,
+				D1113A5827C71038001351B6 /* SceneDelegate.swift */,
+				D1113A5627C71038001351B6 /* AppDelegate.swift */,
 				D1113A6427C71039001351B6 /* Info.plist */,
 				D145FDFA27C81AEB00085EE8 /* Resources */,
 			);
@@ -166,6 +159,37 @@
 				D145FE1027C81AEB00085EE8 /* Sleepless.mp3 */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		D1AA7E3027C9F6B000FC9112 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				D1113A5C27C71038001351B6 /* Main.storyboard */,
+				D1113A6A27C711AF001351B6 /* HomeViewController.swift */,
+				D145FE2727C835C100085EE8 /* TrackCollectionHeaderView.swift */,
+				D1113A6C27C7122D001351B6 /* TrackCollectionViewCell.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		D1AA7E3127C9F6C400FC9112 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				D13FBF0327C9A0EA0022DF65 /* Player.storyboard */,
+				D177C1A127C9ACBE00D23C0E /* SimplePlayer.swift */,
+				D13FBF0927C9A6B80022DF65 /* PlayerViewController.swift */,
+				D1113A6E27C71266001351B6 /* ExtensionAVPlayerItem.swift */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		D1AA7E3227C9F6CB00FC9112 /* Track */ = {
+			isa = PBXGroup;
+			children = (
+				D1113A7227C712A5001351B6 /* Track.swift */,
+				D1113A7027C71289001351B6 /* TrackManager.swift */,
+			);
+			path = Track;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
